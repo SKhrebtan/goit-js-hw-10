@@ -43,7 +43,7 @@ function renderCatCard(response) {
     return `<option value="${cat.id}" descr="${cat.description}" name="${cat.name}" temp="${cat.temperament}">${cat.name}</option>`;
   }).join('');
    select.innerHTML = markup;
-   select.style.display = 'block';
+   select.style.display = 'flex';
 
   new SlimSelect({
     select: '#selectElement',
@@ -66,9 +66,9 @@ function renderCatCard(response) {
     minSelected: 0,
     maxSelected: 1000,
     timeoutDelay: 200,
-    maxValuesShown: 20,
-    maxValuesMessage: '{number} selected',
-  },
+    maxValuesShown: 40,
+      maxValuesMessage: '{number} selected',
+      },
       })
 }
     function catCardCreate(cat) {
@@ -79,16 +79,17 @@ function renderCatCard(response) {
       const catDescription = cat[0].breeds[0].description;
      
       catInfo.innerHTML = '';
-     pLoader.style.display = 'none';
-      catInfo.style.display = 'block';
-      
+           
       const markup = `
-      <h1>${catName}</h1>
-      <img src="${catImg}" alt="${catName}" width="640">
+      <img src="${catImg}" alt="${catName}" width="480">
+      <div class="info-wrapper">
+      <h1>${catName}</h1>      
       <p class="cat-descr">${catDescription}</p>
-      <p><span class="card-span">Temperament: </span>${catTemperamnet}</p>`;
+      <p><span class="card-span">Temperament: </span>${catTemperamnet}</p>
+      </div>`;
       catInfo.innerHTML = markup;
-        
+      pLoader.style.display = 'none';
+      catInfo.style.display = 'flex';
 }
 
 

@@ -58,11 +58,39 @@ p {
   margin: 0;
 }
 
+body {
+  font-size: 24px;
+}
 .breed-select {
   display: none;
   margin-bottom: 20px;
   width: 300px !important;
+  overflow-y: auto;
+  scroll-behavior: smooth;
 }
 /* .ss-main {
   width: 300px;
 } */
+
+.card-span {
+  font-weight: 800;
+}
+
+.cat-info p {
+  width: 600px;
+}
+
+.cat-info h1 {
+  text-align: center;
+}
+
+.cat-info {
+  display: flex;
+  gap: 24px;
+}
+
+.cat-descr {
+  font-style: italic;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
