@@ -2,6 +2,7 @@ import axios from "axios";
 import { fetchBreeds, fetchCatByBreed} from './cat-api';
 import Notiflix from 'notiflix';
 import SlimSelect from 'slim-select';
+import 'slim-select/dist/slimselect.css';
 
 axios.defaults.headers.common["x-api-key"] = "live_2jIJfwcZBQTHZg4p85o314KTbd5zRvyg8dxZzmKirNbBbL8mHf7vy0nplnD7JLOE";
 
@@ -41,12 +42,34 @@ function renderCatCard(response) {
   const markup = response.map((cat) => {
     return `<option value="${cat.id}" descr="${cat.description}" name="${cat.name}" temp="${cat.temperament}">${cat.name}</option>`;
   }).join('');
-  select.style.display = 'block';
-  select.innerHTML = markup;
+   select.innerHTML = markup;
+   select.style.display = 'block';
 
-  // new SlimSelect({
-  //   select: '#selectElement',
-  //  })
+  new SlimSelect({
+    select: '#selectElement',
+    settings: {
+    disabled: false,
+    alwaysOpen: false,
+    showSearch: true,
+    searchPlaceholder: 'Search',
+    searchText: 'No Results',
+    searchingText: 'Searching...',
+    searchHighlight: false,
+    closeOnSelect: true,
+    contentLocation: document.body,
+    contentPosition: 'absolute',
+    openPosition: 'auto', // options: auto, up, down
+    placeholderText: 'Select Value',
+    allowDeselect: false,
+    hideSelected: false,
+    showOptionTooltips: false,
+    minSelected: 0,
+    maxSelected: 1000,
+    timeoutDelay: 200,
+    maxValuesShown: 20,
+    maxValuesMessage: '{number} selected',
+  },
+      })
 }
     function catCardCreate(cat) {
             
