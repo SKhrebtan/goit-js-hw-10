@@ -61,5 +61,8 @@ p {
 .breed-select {
   display: none;
   margin-bottom: 20px;
-  width: 300px;
+  width: 300px !important;
 }
+/* .ss-main {
+  width: 300px;
+} */
