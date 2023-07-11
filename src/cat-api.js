@@ -3,7 +3,7 @@ export const fetchBreeds = function () {
     .then(response => { return response.json() })
     .catch(error => {
       console.log(error);
-      Notiflix.Notify.failure('Oops! Something went wrong! Try reloading the page!')
+      Notiflix.Notify.failure('Oops! Something went wrong! Try reloading the page!');
     })
 };
 
@@ -12,5 +12,6 @@ export const fetchCatByBreed = function (id) {
     .then(response => { return response.json() })
     .catch(error => {
       console.log(error);
+      Notiflix.Notify.failure('Oops! Something went wrong! Try reloading the page!');
     });
 };

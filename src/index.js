@@ -15,7 +15,7 @@ onPageLoad();
 function onPageLoad() {
 select.style.display = 'none';
 catInfo.style.display = 'none';
-pLoader.style.display = 'block';
+pLoader.style.display = '';
 };
  
 fetchBreeds()
@@ -23,6 +23,9 @@ fetchBreeds()
     catInfo.style.display = 'none';
     pLoader.style.display = 'none';
     renderCatCard(response);
+     new SlimSelect({
+    select: '#selectElement',
+     })
     }
 ).catch((error) => {
   console.log(error);
@@ -44,32 +47,6 @@ function renderCatCard(response) {
   }).join('');
    select.innerHTML = markup;
    select.style.display = 'flex';
-
-  new SlimSelect({
-    select: '#selectElement',
-    settings: {
-    disabled: false,
-    alwaysOpen: false,
-    showSearch: true,
-    searchPlaceholder: 'Search',
-    searchText: 'No Results',
-    searchingText: 'Searching...',
-    searchHighlight: false,
-    closeOnSelect: true,
-    contentLocation: document.body,
-    contentPosition: 'absolute',
-    openPosition: 'auto', // options: auto, up, down
-    placeholderText: 'Select Value',
-    allowDeselect: false,
-    hideSelected: false,
-    showOptionTooltips: false,
-    minSelected: 0,
-    maxSelected: 1000,
-    timeoutDelay: 200,
-    maxValuesShown: 40,
-      maxValuesMessage: '{number} selected',
-      },
-      })
 }
     function catCardCreate(cat) {
             
