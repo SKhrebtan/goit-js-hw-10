@@ -4,6 +4,13 @@ import Notiflix from 'notiflix';
 import SlimSelect from 'slim-select';
 import 'slim-select/dist/slimselect.css';
 
+Notiflix.Notify.init({
+  position: 'center-top', 
+  cssAnimation: true,
+  cssAnimationDuration: 400,
+  cssAnimationStyle: 'from-right',
+});
+
 axios.defaults.headers.common["x-api-key"] = "live_2jIJfwcZBQTHZg4p85o314KTbd5zRvyg8dxZzmKirNbBbL8mHf7vy0nplnD7JLOE";
 
 const select = document.querySelector('.breed-select');
@@ -23,11 +30,12 @@ fetchBreeds()
     catInfo.style.display = 'none';
     pLoader.style.display = 'none';
     renderCatCard(response);
+    
      new SlimSelect({
-    select: '#selectElement',
-     })
-    }
-).catch((error) => {
+       select: '#selectElement',
+          })
+  }).
+  catch((error) => {
   console.log(error);
   Notiflix.Notify.failure('Oops! Something went wrong! Try reloading the page!');
 })
@@ -45,11 +53,18 @@ function renderCatCard(response) {
   const markup = response.map((cat) => {
     return `<option value="${cat.id}" descr="${cat.description}" name="${cat.name}" temp="${cat.temperament}">${cat.name}</option>`;
   }).join('');
-   select.innerHTML = markup;
+  select.innerHTML = markup;
+  const firstOption = `<option value="none" selected disabled hidden>Select a Cat</option>`;
+  select.insertAdjacentHTML('afterbegin', firstOption);
    select.style.display = 'flex';
 }
     function catCardCreate(cat) {
-            
+        if (cat.length === 0) {
+        Notiflix.Notify.failure('Вибачте, інформація по даному коту оновлюється');
+        onPageLoad();
+        pLoader.style.display = 'none'; 
+        return;
+      }
       const catName = cat[0].breeds[0].name;
       const catImg = cat[0].url;
       const catTemperamnet = cat[0].breeds[0].temperament;
