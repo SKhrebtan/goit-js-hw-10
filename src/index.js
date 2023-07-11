@@ -15,7 +15,7 @@ onPageLoad();
 function onPageLoad() {
 select.style.display = 'none';
 catInfo.style.display = 'none';
-pLoader.style.display = '';
+pLoader.style.display = 'block';
 };
  
 fetchBreeds()
